@@ -1,0 +1,907 @@
+# VEHICLE MARKETPLACE PROJECT
+
+# FULL DEVELOPMENT DOCUMENT
+
+# Laravel + Livewire + Tailwind CSS
+
+---
+
+# PROJECT OVERVIEW
+
+இந்த project ஒரு:
+
+Vehicle Listing Marketplace System
+
+இதில்:
+
+* Car
+* Bike
+* Bus
+* Van
+* Truck
+
+போன்ற vehicle listings dynamic ஆக create செய்யலாம்.
+
+இந்த system:
+
+✅ Admin controlled
+✅ Dynamic categories
+✅ Dynamic subcategories
+✅ Vehicle gallery
+✅ Video popup
+✅ WhatsApp enquiry
+✅ Search system
+✅ Related products suggestion
+✅ SEO friendly URLs
+✅ Mobile responsive
+
+---
+
+# TECHNOLOGY STACK
+
+| Technology       | Usage            |
+| ---------------- | ---------------- |
+| Laravel          | Backend          |
+| Livewire         | Dynamic frontend |
+| Tailwind CSS CDN | UI Design        |
+| MySQL            | Database         |
+| Laravel Storage  | Media Upload     |
+| Blade            | Template Engine  |
+
+---
+
+# IMPORTANT RULES
+
+## NO REACT
+
+## NO NODEJS
+
+## NO VITE
+
+## ONLY:
+
+* Laravel
+* Livewire
+* Tailwind CDN
+
+---
+
+# PROJECT MODULES
+
+## FRONTEND
+
+* Home Page
+* Category Page
+* Subcategory Page
+* Product Listing
+* Product Details
+* Search Page
+* Contact Page
+
+---
+
+## ADMIN PANEL
+
+* Dashboard
+* Categories
+* Subcategories
+* Vehicles
+* Gallery
+* Videos
+* Enquiries
+* Settings
+
+---
+
+# DATABASE ARCHITECTURE
+
+---
+
+# 1. categories TABLE
+
+Main vehicle types.
+
+Example:
+
+* Bike
+* Car
+* Bus
+
+## Fields
+
+```plaintext
+id
+name
+slug
+icon
+status
+created_at
+updated_at
+```
+
+---
+
+# 2. subcategories TABLE
+
+Vehicle brands.
+
+Example:
+
+Bike → Hero
+
+Bike → Honda
+
+Car → Hyundai
+
+## Fields
+
+```plaintext
+id
+category_id
+name
+slug
+logo
+status
+created_at
+updated_at
+```
+
+---
+
+# 3. vehicles TABLE
+
+Main vehicle data.
+
+## Fields
+
+```plaintext
+id
+category_id
+subcategory_id
+title
+slug
+price
+discount_price
+manufacturer_year
+fuel_type
+km_driven
+thumbnail
+description
+featured
+status
+created_at
+updated_at
+```
+
+---
+
+# 4. vehicle_gallery TABLE
+
+Multiple images + videos.
+
+## Fields
+
+```plaintext
+id
+vehicle_id
+file
+type
+sort_order
+created_at
+updated_at
+```
+
+type:
+
+```plaintext
+image
+video
+```
+
+---
+
+# 5. enquiries TABLE
+
+WhatsApp enquiry records.
+
+## Fields
+
+```plaintext
+id
+vehicle_id
+name
+city
+phone
+message
+created_at
+```
+
+---
+
+# 6. settings TABLE
+
+Website settings.
+
+## Fields
+
+```plaintext
+id
+site_name
+logo
+whatsapp_number
+facebook
+instagram
+youtube
+email
+address
+```
+
+---
+
+# PROJECT FOLDER STRUCTURE
+
+```plaintext
+app/
+├── Livewire/
+│
+├── Models/
+│
+├── Services/
+│
+├── Helpers/
+│
+resources/
+├── views/
+│   ├── front/
+│   ├── admin/
+│   ├── components/
+│   └── layouts/
+```
+
+---
+
+# LIVEWIRE COMPONENT STRUCTURE
+
+## FRONT COMPONENTS
+
+```plaintext
+HomePage
+CategoryPage
+SubcategoryPage
+VehicleListPage
+VehicleDetailsPage
+SearchPage
+ContactPage
+```
+
+---
+
+## ADMIN COMPONENTS
+
+```plaintext
+Dashboard
+CategoryManager
+SubcategoryManager
+VehicleManager
+GalleryManager
+SettingsManager
+EnquiryManager
+```
+
+---
+
+# ROUTING STRUCTURE
+
+## FRONT ROUTES
+
+```plaintext
+/
+```
+
+Home page.
+
+---
+
+```plaintext
+/category/bikes
+```
+
+Category page.
+
+---
+
+```plaintext
+/category/bikes/hero
+```
+
+Subcategory page.
+
+---
+
+```plaintext
+/category/bikes/hero/splendor-plus
+```
+
+Vehicle details page.
+
+---
+
+```plaintext
+/search
+```
+
+Search page.
+
+---
+
+```plaintext
+/contact
+```
+
+Contact page.
+
+---
+
+# CATEGORY SYSTEM
+
+Admin dynamically:
+
+✅ Create category
+✅ Edit category
+✅ Delete category
+
+Example:
+
+```plaintext
+Bike
+Car
+Bus
+Van
+```
+
+---
+
+# SUBCATEGORY SYSTEM
+
+Admin dynamically:
+
+✅ Create subcategory
+✅ Link to category
+
+Example:
+
+```plaintext
+Category → Bike
+
+Subcategory:
+Hero
+Honda
+TVS
+Yamaha
+```
+
+---
+
+# VEHICLE CREATE FLOW
+
+Admin:
+
+1. Select category
+2. Select subcategory
+3. Add vehicle details
+4. Upload thumbnail
+5. Upload gallery
+6. Save
+
+---
+
+# THUMBNAIL SYSTEM
+
+Only:
+
+✅ One thumbnail image
+
+Used for:
+
+* Product card
+* Home page
+* SEO
+* Share image
+
+---
+
+# GALLERY SYSTEM
+
+Gallery supports:
+
+✅ Unlimited images
+✅ Unlimited videos
+
+---
+
+# GALLERY UI FLOW
+
+```plaintext
+[IMAGE]
+[IMAGE]
+[VIDEO]
+[IMAGE]
+```
+
+---
+
+# POPUP SYSTEM
+
+## IMAGE POPUP
+
+Click image:
+
+✅ Fullscreen popup
+✅ Previous / next navigation
+
+---
+
+## VIDEO POPUP
+
+Click video:
+
+✅ Video modal open
+✅ Play video
+
+---
+
+# PRODUCT DETAILS PAGE
+
+---
+
+# TOP SECTION
+
+```plaintext
+Large Thumbnail
+```
+
+---
+
+# VEHICLE INFORMATION
+
+```plaintext
+Vehicle Name
+Price
+Discount Price
+Year
+Fuel Type
+KM Driven
+Description
+```
+
+---
+
+# GALLERY SECTION
+
+```plaintext
+Images + Videos
+```
+
+---
+
+# ENQUIRY SECTION
+
+Fields:
+
+* Name
+* City
+* Phone
+* Message
+
+---
+
+# WHATSAPP ENQUIRY FLOW
+
+User submit:
+
+```plaintext
+Name
+City
+Phone
+```
+
+System auto opens:
+
+```plaintext
+WhatsApp Message
+```
+
+---
+
+# SAMPLE WHATSAPP MESSAGE
+
+```plaintext
+Vehicle Enquiry
+
+Vehicle:
+Hero Splendor Plus
+
+Name:
+Rahul
+
+City:
+Chennai
+
+Phone:
+9876543210
+```
+
+---
+
+# SEARCH SYSTEM
+
+---
+
+# SEARCH FEATURES
+
+User search:
+
+✅ Vehicle name
+✅ Brand
+✅ Category
+✅ Model
+✅ Year
+
+---
+
+# SEARCH BAR FLOW
+
+Example:
+
+```plaintext
+Search:
+Splendor
+```
+
+Results:
+
+```plaintext
+Hero Splendor Plus
+Hero Splendor Xtec
+```
+
+---
+
+# FILTER SYSTEM
+
+## Filters
+
+✅ Category
+✅ Subcategory
+✅ Price
+✅ Year
+✅ Fuel type
+
+---
+
+# RELATED PRODUCTS SYSTEM
+
+Product details page-ல்:
+
+## Auto Suggestion
+
+Related:
+
+* Same category
+* Same subcategory
+* Similar price
+
+---
+
+# RELATED PRODUCTS FLOW
+
+Example:
+
+Current product:
+
+```plaintext
+Hero Splendor
+```
+
+Suggestions:
+
+```plaintext
+Hero HF Deluxe
+Hero Passion
+Honda Shine
+```
+
+---
+
+# RELATED PRODUCTS QUERY LOGIC
+
+Priority:
+
+1. Same subcategory
+2. Same category
+3. Similar price range
+
+---
+
+# CONTACT PAGE
+
+Separate page.
+
+---
+
+# CONTACT PAGE SECTIONS
+
+## Contact Details
+
+* WhatsApp
+* Phone
+* Email
+* Address
+
+---
+
+# CONTACT FORM
+
+Fields:
+
+```plaintext
+Name
+Phone
+Message
+```
+
+---
+
+# SOCIAL MEDIA SYSTEM
+
+Admin can update:
+
+✅ Facebook
+✅ Instagram
+✅ YouTube
+✅ Telegram
+
+---
+
+# ADMIN DASHBOARD
+
+Dashboard cards:
+
+```plaintext
+Total Vehicles
+Total Categories
+Total Enquiries
+Featured Listings
+```
+
+---
+
+# FEATURED VEHICLE SYSTEM
+
+Admin can mark:
+
+```plaintext
+featured = true
+```
+
+Homepage featured section show.
+
+---
+
+# STORAGE STRUCTURE
+
+```plaintext
+storage/app/public/
+
+vehicles/
+    thumbnails/
+    gallery/
+```
+
+---
+
+# SEO STRUCTURE
+
+URLs:
+
+```plaintext
+/category/bikes
+```
+
+```plaintext
+/category/bikes/hero
+```
+
+```plaintext
+/category/bikes/hero/splendor-plus
+```
+
+SEO friendly.
+
+---
+
+# MOBILE RESPONSIVE STRUCTURE
+
+Tailwind responsive design.
+
+Supports:
+
+✅ Mobile
+✅ Tablet
+✅ Desktop
+
+---
+
+# HOMEPAGE STRUCTURE
+
+## Sections
+
+* Hero Banner
+* Categories
+* Featured Vehicles
+* Latest Vehicles
+* Brands
+* Footer
+
+---
+
+# VEHICLE CARD STRUCTURE
+
+```plaintext
+[ Thumbnail ]
+
+Vehicle Name
+
+₹ Price
+₹ Discount
+
+Year
+Brand
+```
+
+---
+
+# SETTINGS PAGE
+
+Admin update:
+
+* Website logo
+* WhatsApp number
+* Social links
+* Contact details
+
+---
+
+# FUTURE FEATURES
+
+Later add:
+
+✅ User login
+✅ Seller dashboard
+✅ Favorite vehicles
+✅ Vehicle comparison
+✅ Premium listing
+✅ Subscription plans
+✅ Analytics dashboard
+
+---
+
+# SECURITY
+
+## ADMIN PROTECTION
+
+Use:
+
+```plaintext
+Laravel Authentication
+```
+
+Admin routes protected.
+
+---
+
+# PERFORMANCE OPTIMIZATION
+
+Use:
+
+✅ Lazy loading
+✅ Optimized images
+✅ Pagination
+✅ Livewire pagination
+
+---
+
+# FINAL PROJECT FLOW
+
+```plaintext
+Home
+→ Category
+→ Subcategory
+→ Vehicle Listing
+→ Vehicle Details
+→ Gallery Popup
+→ WhatsApp Enquiry
+```
+
+---
+
+# FINAL PROJECT TYPE
+
+இந்த project:
+
+✅ Vehicle Marketplace
+✅ Dynamic Listing Platform
+✅ WhatsApp Lead System
+✅ SEO Friendly Marketplace
+✅ Mobile Responsive Livewire App
+
+---
+
+# DEVELOPMENT PHASES
+
+---
+
+# PHASE 1
+
+Core setup.
+
+* Laravel install
+* Livewire install
+* Tailwind CDN
+
+---
+
+# PHASE 2
+
+Database structure.
+
+* Categories
+* Subcategories
+* Vehicles
+
+---
+
+# PHASE 3
+
+Admin panel.
+
+* CRUD operations
+* Upload system
+
+---
+
+# PHASE 4
+
+Frontend.
+
+* Listing pages
+* Details page
+* Search system
+
+---
+
+# PHASE 5
+
+Advanced features.
+
+* Related products
+* WhatsApp enquiry
+* Gallery popup
+* Video popup
+
+---
+
+# FINAL RESULT
+
+Modern vehicle listing marketplace system with:
+
+✅ Dynamic admin panel
+✅ Category system
+✅ Subcategory system
+✅ Search + filters
+✅ Gallery popup
+✅ Video popup
+✅ WhatsApp enquiry
+✅ Related products suggestion
+✅ SEO structure
+✅ Mobile responsive UI
